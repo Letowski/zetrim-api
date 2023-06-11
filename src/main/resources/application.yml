@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: "jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/secmes?currentSchema=secmes"
+    username: secmes_user
+    password: secmes_user
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  liquibase:
+    enabled: true
+    change-log: 'classpath:db-migrations/changelog.xml'
+    user: secmes
+    password: secmes
+    contexts: dev
+logging:
+  level:
+    root: ${LOGGING_ROOT:INFO}
+    com.zetrim: ${LOG_LEVEL:INFO}
